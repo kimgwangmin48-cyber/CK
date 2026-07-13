@@ -11,7 +11,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="text-xl">☀️</span>
-          <span className="text-lg font-bold tracking-tight text-slate-900">SolarCare Agent</span>
+          <span className="text-lg font-bold tracking-tight text-slate-900">Solarix AI</span>
         </div>
         <nav className="flex gap-1">
           <NavLink to="/" end className={linkClass}>
