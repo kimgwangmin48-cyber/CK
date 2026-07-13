@@ -1,11 +1,23 @@
 {
-  "name": "ck",
-  "version": "1.0.0",
+  "name": "solarcare-agent",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "start": "serve -s . -l $PORT"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "npm run build && vite preview --host 0.0.0.0 --port ${PORT:-3000}"
   },
   "dependencies": {
-    "serve": "^14.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "@vitejs/plugin-react": "^6.0.3",
+    "tailwindcss": "^4.3.2",
+    "vite": "^8.1.1"
   }
 }
