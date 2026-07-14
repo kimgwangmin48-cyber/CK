@@ -27,3 +27,26 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## Database (Part 5)
+
+The `server/` folder is a small Express API backed by PostgreSQL: `server/db.js` opens the connection pool from `DATABASE_URL`, `server/migrate.js` creates the `users` table, and `server/routes/auth.js` exposes `POST /api/signup` and `POST /api/login` (passwords hashed with bcrypt, SQL uses parameterized queries).
+
+### One-time setup on Render
+
+1. Render Dashboard → **New +** → **Postgres** → same region as the web service → Free tier → Create Database.
+2. On the database page, open **Connect** and copy the **Internal Database URL**.
+3. On the web service → **Environment** → add `DATABASE_URL` = that internal URL → Save (redeploys).
+
+### Local development
+
+1. Copy `.env.example` to `.env` and set `DATABASE_URL` to the database's **External** connection string (from the same Connect menu).
+2. Run the migration once: `npm run migrate`
+3. Start the API: `npm run dev:server` (serves on `PORT`, default 3000)
+4. In another terminal, run the frontend as usual: `npm run dev`
+
+`.env` is gitignored — never commit it, it contains the database password.
+
+### Deployed start command
+
+`npm start` builds the frontend and runs `node server/index.js`, which serves the built `dist/` files and the `/api/*` routes from one process — matching Render's single web-service setup.
